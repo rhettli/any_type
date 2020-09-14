@@ -3,25 +3,25 @@ package any_type
 import "strconv"
 
 type SafeList struct {
-	list  []*AnyType
-	index int
+	List  []*AnyType
+	Index int
 }
 
 func (ls *SafeList) Get(key int) *AnyType {
-	return ls.list[key]
+	return ls.List[key]
 }
 func (ls *SafeList) Next() *AnyType {
-	if ls.index == len(ls.list) {
+	if ls.Index == len(ls.List) {
 		return &AnyType{V: ""}
 	}
-	o := ls.list[ls.index]
-	ls.index++
+	o := ls.List[ls.Index]
+	ls.Index++
 	return o
 }
 
 func (ls *SafeList) First() *AnyType {
-	ls.index = 1
-	return ls.list[0]
+	ls.Index = 1
+	return ls.List[0]
 }
 
 type AnyType struct {
